@@ -1,68 +1,119 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import "tailwindcss";
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+/* 
+  ThriftShop Color Theme
+  Modern, fresh, and eco-friendly vibes for a thrift/preloved marketplace
+  Primary: Teal/Emerald - represents sustainability & freshness
+  Accent: Warm Amber - represents value & warmth
+*/
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+@theme {
+  /* Background & Foreground */
+  --color-background: hsl(150 20% 99%);
+  --color-foreground: hsl(160 25% 10%);
+  
+  /* Card */
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(160 25% 10%);
+  
+  /* Popover */
+  --color-popover: hsl(0 0% 100%);
+  --color-popover-foreground: hsl(160 25% 10%);
+  
+  /* Primary - Teal/Emerald Green (eco-friendly, fresh) */
+  --color-primary: hsl(162 63% 41%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  
+  /* Secondary - Soft Sage */
+  --color-secondary: hsl(150 20% 94%);
+  --color-secondary-foreground: hsl(160 25% 20%);
+  
+  /* Muted */
+  --color-muted: hsl(150 15% 95%);
+  --color-muted-foreground: hsl(160 10% 45%);
+  
+  /* Accent - Warm Amber/Gold */
+  --color-accent: hsl(38 92% 50%);
+  --color-accent-foreground: hsl(0 0% 100%);
+  
+  /* Destructive - Coral Red */
+  --color-destructive: hsl(0 72% 51%);
+  --color-destructive-foreground: hsl(0 0% 100%);
+  
+  /* Success - Green */
+  --color-success: hsl(142 76% 36%);
+  --color-success-foreground: hsl(0 0% 100%);
+  
+  /* Warning - Amber */
+  --color-warning: hsl(38 92% 50%);
+  --color-warning-foreground: hsl(0 0% 10%);
+  
+  /* Info - Sky Blue */
+  --color-info: hsl(199 89% 48%);
+  --color-info-foreground: hsl(0 0% 100%);
+  
+  /* Border & Input */
+  --color-border: hsl(150 15% 88%);
+  --color-input: hsl(150 15% 88%);
+  --color-ring: hsl(162 63% 41%);
+  
+  /* Radius */
+  --radius: 0.625rem;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+* {
+  border-color: var(--color-border);
 }
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+/* Custom gradient utilities */
+.bg-gradient-primary {
+  background: linear-gradient(135deg, hsl(162 63% 41%) 0%, hsl(172 66% 50%) 100%);
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.bg-gradient-accent {
+  background: linear-gradient(135deg, hsl(38 92% 50%) 0%, hsl(28 87% 55%) 100%);
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.bg-gradient-hero {
+  background: linear-gradient(135deg, hsl(162 63% 41%) 0%, hsl(150 60% 45%) 50%, hsl(38 92% 50%) 100%);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(162 40% 70%);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(162 50% 55%);
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--color-ring);
+  outline-offset: 2px;
+}
+
+/* Selection */
+::selection {
+  background-color: hsl(162 63% 41% / 0.2);
+  color: var(--color-foreground);
 }
