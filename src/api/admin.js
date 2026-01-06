@@ -12,15 +12,15 @@ export const adminApi = {
   getItems: (params) => api.get("/admin/items", { params }),
   toggleItemActive: (id) => api.put(`/admin/items/${id}/toggle-active`),
 
-  // Categories
-  getCategories: () => api.get("/admin/categories"),
+  // Categories - menggunakan endpoint public untuk list, admin untuk CUD
+  getCategories: () => api.get("/categories"), // Public endpoint
   createCategory: (data) => api.post("/admin/categories", data),
   updateCategory: (id, data) => api.put(`/admin/categories/${id}`, data),
   deleteCategory: (id) => api.delete(`/admin/categories/${id}`),
 
-  // Orders
-  getOrders: (params) => api.get("/admin/orders", { params }),
-  getOrderById: (id) => api.get(`/admin/orders/${id}`),
+  // Orders - menggunakan endpoint customer dengan admin token
+  getOrders: (params) => api.get("/orders", { params }), // Customer endpoint, admin bisa lihat semua
+  getOrderById: (id) => api.get(`/orders/${id}`),
   updateOrderStatus: (id, status) =>
     api.put(`/admin/orders/${id}/status`, { status }),
   updatePaymentStatus: (id, payment_status) =>
