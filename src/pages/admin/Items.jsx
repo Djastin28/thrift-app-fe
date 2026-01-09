@@ -167,6 +167,15 @@ export default function Items() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    
+    // Validasi untuk field numerik - cegah nilai negatif
+    if (name === 'price' || name === 'stock') {
+      // Hanya izinkan angka positif
+      if (value !== '' && parseFloat(value) < 0) {
+        return; // Jangan update jika negatif
+      }
+    }
+    
     setFormData(prev => ({ ...prev, [name]: value }));
     if (formErrors[name]) {
       setFormErrors(prev => ({ ...prev, [name]: '' }));
@@ -176,8 +185,19 @@ export default function Items() {
   const validateForm = () => {
     const errors = {};
     if (!formData.name.trim()) errors.name = 'Nama produk harus diisi';
-    if (!formData.price || parseFloat(formData.price) <= 0) errors.price = 'Harga harus lebih dari 0';
-    if (!formData.stock || parseInt(formData.stock) < 0) errors.stock = 'Stok tidak valid';
+    
+    // Validasi harga - harus diisi dan lebih dari 0
+    const price = parseFloat(formData.price);
+    if (!formData.price || isNaN(price) || price <= 0) {
+      errors.price = 'Harga harus diisi dan lebih dari 0';
+    }
+    
+    // Validasi stok - harus diisi dan tidak negatif
+    const stock = parseInt(formData.stock);
+    if (formData.stock === '' || isNaN(stock) || stock < 0) {
+      errors.stock = 'Stok harus diisi dan tidak boleh negatif';
+    }
+    
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -627,7 +647,9 @@ export default function Items() {
                   value={formData.price}
                   onChange={handleChange}
                   placeholder="50000"
-                  min="0"
+                  min="1"
+                  step="any"
+                  required
                 />
                 {formErrors.price && (
                   <p className="text-sm text-red-600 mt-1">{formErrors.price}</p>
@@ -645,6 +667,8 @@ export default function Items() {
                   onChange={handleChange}
                   placeholder="1"
                   min="0"
+                  step="1"
+                  required
                 />
                 {formErrors.stock && (
                   <p className="text-sm text-red-600 mt-1">{formErrors.stock}</p>
