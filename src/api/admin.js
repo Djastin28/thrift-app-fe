@@ -10,6 +10,9 @@ export const adminApi = {
 
   // Items
   getItems: (params) => api.get("/admin/items", { params }),
+  createItem: (data) => api.post("/admin/items", data),
+  updateItem: (id, data) => api.put(`/admin/items/${id}`, data),
+  deleteItem: (id) => api.delete(`/admin/items/${id}`),
   toggleItemActive: (id) => api.put(`/admin/items/${id}/toggle-active`),
 
   // Categories - menggunakan endpoint public untuk list, admin untuk CUD

@@ -5,22 +5,33 @@ export const useCartStore = create((set, get) => ({
   items: [],
   isLoading: false,
 
-  // Computed
-  totalItems: () => get().items.reduce((sum, item) => sum + item.quantity, 0),
-  totalPrice: () =>
-    get().items.reduce(
-      (sum, item) => sum + parseFloat(item.item.price) * item.quantity,
+  // Computed - with safety checks
+  totalItems: () => {
+    const items = get().items;
+    if (!items || !Array.isArray(items)) return 0;
+    return items.reduce((sum, item) => sum + (item?.quantity || 0), 0);
+  },
+  totalPrice: () => {
+    const items = get().items;
+    if (!items || !Array.isArray(items)) return 0;
+    return items.reduce(
+      (sum, item) => sum + (parseFloat(item?.item?.price || 0) * (item?.quantity || 0)),
       0
-    ),
+    );
+  },
 
   // Actions
   fetchCart: async () => {
     set({ isLoading: true });
     try {
       const response = await cartApi.getAll();
-      set({ items: response.data.data, isLoading: false });
+      // API returns array directly, not wrapped in { data: [...] }
+      const cartData = Array.isArray(response.data) 
+        ? response.data 
+        : (response.data?.data || []);
+      set({ items: cartData, isLoading: false });
     } catch (error) {
-      set({ isLoading: false });
+      set({ items: [], isLoading: false });
       throw error;
     }
   },

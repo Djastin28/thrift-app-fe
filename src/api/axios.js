@@ -27,12 +27,11 @@ api.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response?.status === 401) {
+      // Clear token from localStorage
       localStorage.removeItem("token");
-      localStorage.removeItem("user");
-      // Redirect to login if not already there
-      if (window.location.pathname !== "/login") {
-        window.location.href = "/login";
-      }
+      // Clear auth-storage (zustand persist)
+      localStorage.removeItem("auth-storage");
+      // Don't auto-redirect, let the route guards handle it
     }
     return Promise.reject(error);
   }

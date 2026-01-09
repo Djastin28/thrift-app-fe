@@ -4,14 +4,10 @@ import { authApi } from "../api/auth";
 
 export const useAuthStore = create(
   persist(
-    (set, get) => ({
+    (set) => ({
       user: null,
       token: null,
       isLoading: false,
-
-      // Computed
-      isAuthenticated: () => !!get().token,
-      isAdmin: () => get().user?.role === "admin",
 
       // Actions
       setAuth: (user, token) => {

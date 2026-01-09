@@ -8,7 +8,7 @@ import {
   Menu,
   X,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuthStore } from "../../store/authStore";
 import { useCartStore } from "../../store/cartStore";
 import { cn } from "../../lib/utils";
@@ -16,11 +16,21 @@ import { cn } from "../../lib/utils";
 export function Header() {
   const navigate = useNavigate();
   const { user, token, logout } = useAuthStore();
-  const totalItems = useCartStore((state) => state.totalItems);
+  const { totalItems, fetchCart } = useCartStore();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const isAuthenticated = !!token;
   const isAdmin = user?.role === "admin";
+  
+  // Safe cart count
+  const cartCount = typeof totalItems === 'function' ? totalItems() : 0;
+
+  // Fetch cart when user is authenticated
+  useEffect(() => {
+    if (isAuthenticated && !isAdmin) {
+      fetchCart().catch(console.error);
+    }
+  }, [isAuthenticated, isAdmin, fetchCart]);
 
   const handleLogout = async () => {
     await logout();
@@ -51,12 +61,6 @@ export function Header() {
           {isAuthenticated && !isAdmin && (
             <>
               <Link
-                to="/my-items"
-                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
-              >
-                Produk Saya
-              </Link>
-              <Link
                 to="/orders"
                 className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
@@ -83,9 +87,9 @@ export function Header() {
               className="relative rounded-full p-2.5 text-foreground hover:bg-primary/10 hover:text-primary transition-colors"
             >
               <ShoppingCart className="h-5 w-5" />
-              {totalItems() > 0 && (
+              {cartCount > 0 && (
                 <span className="absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-accent text-xs font-bold text-white shadow-sm">
-                  {totalItems()}
+                  {cartCount}
                 </span>
               )}
             </Link>
@@ -150,22 +154,13 @@ export function Header() {
               Beranda
             </Link>
             {isAuthenticated && !isAdmin && (
-              <>
-                <Link
-                  to="/my-items"
-                  className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Produk Saya
-                </Link>
-                <Link
-                  to="/orders"
-                  className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Pesanan
-                </Link>
-              </>
+              <Link
+                to="/orders"
+                className="rounded-md px-3 py-2 text-sm font-medium hover:bg-accent"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Pesanan
+              </Link>
             )}
             {isAdmin && (
               <Link

@@ -22,7 +22,7 @@ import ItemDetail from "./pages/customer/ItemDetail";
 import Cart from "./pages/customer/Cart";
 import Checkout from "./pages/customer/Checkout";
 import Orders from "./pages/customer/Orders";
-import MyItems from "./pages/customer/MyItems";
+
 
 // Admin Pages
 import Dashboard from "./pages/admin/Dashboard";
@@ -85,13 +85,14 @@ function App() {
             }
           />
           <Route
-            path="my-items"
+            path="orders/:id"
             element={
               <ProtectedRoute>
-                <MyItems />
+                <Orders />
               </ProtectedRoute>
             }
           />
+
           <Route
             path="profile"
             element={
