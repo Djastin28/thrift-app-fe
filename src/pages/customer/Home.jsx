@@ -50,8 +50,35 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
+    const fetchItems = async () => {
+      setLoading(true);
+      setError('');
+      try {
+        const params = {
+          page,
+          per_page: 12,
+          ...(search && { search }),
+          ...(selectedCategory && { category_id: selectedCategory }),
+          ...(condition && { condition }),
+          ...(minPrice && { min_price: minPrice }),
+          ...(maxPrice && { max_price: maxPrice }),
+          sort_by: sortBy,
+          sort_order: sortOrder,
+        };
+        
+        const { data } = await itemsApi.getAll(params);
+        setItems(data.data || []);
+        setTotalPages(data.last_page || 1);
+      } catch (err) {
+        setError('Gagal memuat produk');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
     fetchItems();
-  }, [page, search, selectedCategory, condition, minPrice, maxPrice, sortBy, sortOrder, fetchItems]);
+  }, [page, search, selectedCategory, condition, minPrice, maxPrice, sortBy, sortOrder]);
 
   const fetchCategories = async () => {
     try {
@@ -59,33 +86,6 @@ export default function Home() {
       setCategories(data.data || []);
     } catch (err) {
       console.error('Failed to fetch categories:', err);
-    }
-  };
-
-  const fetchItems = async () => {
-    setLoading(true);
-    setError('');
-    try {
-      const params = {
-        page,
-        per_page: 12,
-        ...(search && { search }),
-        ...(selectedCategory && { category_id: selectedCategory }),
-        ...(condition && { condition }),
-        ...(minPrice && { min_price: minPrice }),
-        ...(maxPrice && { max_price: maxPrice }),
-        sort_by: sortBy,
-        sort_order: sortOrder,
-      };
-      
-      const { data } = await itemsApi.getAll(params);
-      setItems(data.data || []);
-      setTotalPages(data.last_page || 1);
-    } catch (err) {
-      setError('Gagal memuat produk');
-      console.error(err);
-    } finally {
-      setLoading(false);
     }
   };
 
