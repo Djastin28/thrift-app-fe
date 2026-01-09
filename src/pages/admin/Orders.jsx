@@ -6,7 +6,7 @@ import { LoadingSpinner } from '../../components/ui/LoadingSpinner';
 import { Alert } from '../../components/ui/Alert';
 import { adminApi } from '../../api/admin';
 import { formatPrice } from '../../lib/utils';
-import { 
+import {
   ChevronLeft,
   ChevronRight,
   ShoppingCart,
@@ -245,7 +245,7 @@ export default function Orders() {
                         <div className="flex flex-col sm:flex-row sm:items-center gap-2 text-xs text-slate-500">
                           <div className="flex items-center gap-1">
                             <User className="h-3.5 w-3.5" />
-                            <span className="truncate">{order.customer_name}</span>
+                            <span className="truncate">{order.shipping_name || order.customer_name || 'N/A'}</span>
                           </div>
                           <span className="hidden sm:inline">•</span>
                           <div className="flex items-center gap-1">
@@ -254,7 +254,7 @@ export default function Orders() {
                           </div>
                           <span className="hidden sm:inline">•</span>
                           <span className="font-semibold text-indigo-600">
-                            {formatPrice(order.total_amount)}
+                            {formatPrice(parseFloat(order.total || order.total_amount || 0))}
                           </span>
                         </div>
                       </div>
@@ -380,7 +380,7 @@ export default function Orders() {
                       <div className="flex items-center gap-2">
                         <User className="h-4 w-4 text-slate-400" />
                         <span className="text-slate-600">Nama:</span>
-                        <span className="font-medium">{selectedOrder.customer_name}</span>
+                        <span className="font-medium">{selectedOrder.shipping_name || selectedOrder.customer_name || 'N/A'}</span>
                       </div>
                       <div className="flex items-start gap-2">
                         <MapPin className="h-4 w-4 text-slate-400 mt-0.5" />
@@ -401,7 +401,7 @@ export default function Orders() {
                   <div className="border-t border-slate-100 pt-4">
                     <h3 className="text-sm font-semibold text-slate-900 mb-3">Produk</h3>
                     <div className="space-y-3">
-                      {selectedOrder.items?.map((item, index) => (
+                      {(selectedOrder.order_items || selectedOrder.items || []).map((item, index) => (
                         <div key={index} className="flex items-center gap-3 p-3 bg-slate-50 rounded-lg">
                           <div className="h-12 w-12 rounded bg-slate-200 flex items-center justify-center flex-shrink-0">
                             <Package className="h-6 w-6 text-slate-400" />
@@ -409,11 +409,11 @@ export default function Orders() {
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-medium text-slate-900 truncate">{item.item_name}</p>
                             <p className="text-xs text-slate-500">
-                              {item.quantity}x {formatPrice(item.price)}
+                              {item.quantity}x {formatPrice(parseFloat(item.price || item.item_price || 0))}
                             </p>
                           </div>
                           <p className="text-sm font-semibold text-slate-900">
-                            {formatPrice(item.quantity * item.price)}
+                            {formatPrice(parseFloat(item.subtotal || (item.quantity * (item.price || item.item_price || 0))))}
                           </p>
                         </div>
                       ))}
@@ -425,7 +425,7 @@ export default function Orders() {
                     <div className="flex items-center justify-between">
                       <span className="text-base font-semibold text-slate-900">Total</span>
                       <span className="text-xl font-bold text-indigo-600">
-                        {formatPrice(selectedOrder.total_amount)}
+                        {formatPrice(parseFloat(selectedOrder.total || selectedOrder.total_amount || 0))}
                       </span>
                     </div>
                   </div>

@@ -28,11 +28,11 @@ export default function Checkout() {
   const navigate = useNavigate();
   const { user } = useAuthStore();
   const { items, fetchCart, totalPrice, clearCart } = useCartStore();
-  
+
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState('');
-  
+
   // Form state
   const [formData, setFormData] = useState({
     shipping_name: user?.name || '',
@@ -47,7 +47,7 @@ export default function Checkout() {
   const SHIPPING_COST = 10000;
 
   useEffect(() => {
-    const loadCart = async () => {
+    const initCart = async () => {
       try {
         await fetchCart();
       } catch (err) {
@@ -57,7 +57,7 @@ export default function Checkout() {
         setLoading(false);
       }
     };
-    loadCart();
+    initCart();
   }, [fetchCart]);
 
   const handleChange = (e) => {
@@ -70,34 +70,34 @@ export default function Checkout() {
 
   const validateForm = () => {
     const newErrors = {};
-    
+
     if (!formData.shipping_name.trim()) {
       newErrors.shipping_name = 'Nama penerima harus diisi';
     }
-    
+
     if (!formData.shipping_phone.trim()) {
       newErrors.shipping_phone = 'Nomor telepon harus diisi';
     } else if (!/^[0-9]{10,15}$/.test(formData.shipping_phone.replace(/[\s-]/g, ''))) {
       newErrors.shipping_phone = 'Nomor telepon tidak valid';
     }
-    
+
     if (!formData.shipping_address.trim()) {
       newErrors.shipping_address = 'Alamat pengiriman harus diisi';
     } else if (formData.shipping_address.trim().length < 20) {
       newErrors.shipping_address = 'Alamat terlalu pendek (minimal 20 karakter)';
     }
-    
+
     if (!formData.payment_method) {
       newErrors.payment_method = 'Pilih metode pembayaran';
     }
-    
+
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateForm()) {
       setError('Mohon lengkapi semua field yang wajib diisi');
       return;
@@ -226,7 +226,7 @@ export default function Checkout() {
                   <MapPin className="h-5 w-5 text-slate-400" />
                   Informasi Pengiriman
                 </h2>
-                
+
                 <div className="space-y-4">
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-2">
@@ -305,20 +305,19 @@ export default function Checkout() {
                   <CreditCard className="h-5 w-5 text-slate-400" />
                   Metode Pembayaran
                 </h2>
-                
+
                 <div className="space-y-3">
                   {paymentMethods.map((method) => {
                     const Icon = method.icon;
                     const isSelected = formData.payment_method === method.value;
-                    
+
                     return (
                       <label
                         key={method.value}
-                        className={`flex items-center gap-4 p-4 border-2 rounded-xl cursor-pointer transition-all ${
-                          isSelected
+                        className={`flex items-center gap-4 p-4 border-2 rounded-xl cursor-pointer transition-all ${isSelected
                             ? 'border-indigo-500 bg-indigo-50/50'
                             : 'border-slate-200 hover:border-slate-300'
-                        }`}
+                          }`}
                       >
                         <input
                           type="radio"
