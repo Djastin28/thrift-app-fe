@@ -22,6 +22,9 @@ import ItemDetail from "./pages/customer/ItemDetail";
 import Cart from "./pages/customer/Cart";
 import Checkout from "./pages/customer/Checkout";
 import Orders from "./pages/customer/Orders";
+import CategoriesPage from "./pages/customer/Categories";
+import About from "./pages/customer/About";
+import Contact from "./pages/customer/Contact";
 
 
 // Admin Pages
@@ -58,6 +61,9 @@ function App() {
           {/* Public Routes */}
           <Route index element={<Home />} />
           <Route path="items/:id" element={<ItemDetail />} />
+          <Route path="categories" element={<CategoriesPage />} />
+          <Route path="about" element={<About />} />
+          <Route path="contact" element={<Contact />} />
 
           {/* Protected Customer Routes */}
           <Route
