@@ -65,7 +65,7 @@ export default function Contact() {
     {
       icon: MapPin,
       title: 'Alamat',
-      value: 'Jl. Fashion Street No. 123, Jakarta',
+      value: 'Jl. Fashion Street No. 123, Surakarta',
       link: null
     },
     {
