@@ -13,7 +13,7 @@ export function Footer() {
                 <Package className="h-5 w-5" />
               </div>
               <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                ThriftShop
+                Kondang Thrift
               </span>
             </Link>
             <p className="text-sm text-muted-foreground leading-relaxed">
@@ -83,7 +83,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm">
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="h-4 w-4 text-primary" />
-                support@thriftshop.com
+                support@kondangthrift.com
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Phone className="h-4 w-4 text-primary" />
@@ -91,7 +91,7 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-2 text-muted-foreground">
                 <MapPin className="h-4 w-4 text-primary shrink-0 mt-0.5" />
-                Jakarta, Indonesia
+                Surkarta, Indonesia
               </li>
             </ul>
           </div>
@@ -99,7 +99,7 @@ export function Footer() {
 
         <div className="mt-10 border-t pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} ThriftShop. All rights reserved.
+            &copy; {new Date().getFullYear()} Kondang Thrift. All rights reserved.
           </p>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
             <a href="#" className="hover:text-primary transition-colors">Kebijakan Privasi</a>

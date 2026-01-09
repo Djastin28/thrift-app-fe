@@ -46,7 +46,7 @@ export function Header() {
             <Package className="h-5 w-5" />
           </div>
           <span className="text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            ThriftShop
+            Kondang Thrift
           </span>
         </Link>
 

@@ -1,4 +1,4 @@
-# ThriftShop - E-Commerce Marketplace
+# Kondang Thrift - E-Commerce Marketplace
 
 ![React](https://img.shields.io/badge/React-19.x-61DAFB?logo=react)
 ![Vite](https://img.shields.io/badge/Vite-7.x-646CFF?logo=vite)

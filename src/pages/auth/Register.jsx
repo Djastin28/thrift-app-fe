@@ -71,7 +71,7 @@ export default function Register() {
         <div className="text-center">
           <Link to="/" className="inline-flex items-center space-x-2">
             <Package className="h-10 w-10 text-primary" />
-            <span className="text-2xl font-bold">ThriftShop</span>
+            <span className="text-2xl font-bold">Kondang Thrift</span>
           </Link>
           <h2 className="mt-6 text-2xl font-bold">Buat akun baru</h2>
           <p className="mt-2 text-sm text-muted-foreground">

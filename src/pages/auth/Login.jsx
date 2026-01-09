@@ -64,7 +64,7 @@ export default function Login() {
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm">
             <Package className="h-6 w-6 text-white" />
           </div>
-          <span className="text-2xl font-bold text-white">ThriftShop</span>
+          <span className="text-2xl font-bold text-white">Kondang Thrift</span>
         </Link>
         <div>
           <h1 className="text-4xl font-bold text-white mb-4">
@@ -75,7 +75,7 @@ export default function Login() {
           </p>
         </div>
         <p className="text-sm text-white/60">
-          © 2025 ThriftShop. All rights reserved.
+          © 2025 Kondang Thrift. All rights reserved.
         </p>
       </div>
 
@@ -88,7 +88,7 @@ export default function Login() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
                 <Package className="h-6 w-6 text-white" />
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">ThriftShop</span>
+              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Kondang Thrift</span>
             </Link>
           </div>
 

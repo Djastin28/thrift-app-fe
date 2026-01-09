@@ -51,7 +51,7 @@ export default function Home() {
 
   useEffect(() => {
     fetchItems();
-  }, [page, search, selectedCategory, condition, minPrice, maxPrice, sortBy, sortOrder]);
+  }, [page, search, selectedCategory, condition, minPrice, maxPrice, sortBy, sortOrder, fetchItems]);
 
   const fetchCategories = async () => {
     try {
@@ -249,7 +249,7 @@ export default function Home() {
     <div className="min-h-screen bg-slate-50">
       {/* Promo Banner */}
       <AnnouncementBanner variant="promo">
-        🎉 Selamat datang di ThriftShop! Temukan barang preloved berkualitas dengan harga terbaik
+        🎉 Selamat datang di Kondang Thrift! Temukan barang preloved berkualitas dengan harga terbaik
       </AnnouncementBanner>
 
       {/* Hero Section */}
