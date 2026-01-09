@@ -116,7 +116,7 @@ export default function Users() {
           
           return (
             <div className="flex items-center gap-3">
-              <div className={`flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br ${colors[colorIndex]} text-white flex-shrink-0 shadow-sm`}>
+              <div className={`flex h-10 w-10 items-center justify-center rounded-full ${colors[colorIndex]} text-white flex-shrink-0 shadow-sm`}>
                 <span className="text-sm font-bold">
                   {initials}
                 </span>
@@ -288,7 +288,7 @@ export default function Users() {
         <CardContent className="p-0">
           {users.length === 0 ? (
             <div className="flex flex-col items-center justify-center py-12 text-center">
-              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-slate-100 to-slate-200 mb-4">
+              <div className="flex h-16 w-16 items-center justify-center rounded-full bg-slate-100 mb-4">
                 <User className="h-8 w-8 text-slate-400" />
               </div>
               <p className="text-base font-medium text-slate-900 mb-1">Tidak ada pengguna ditemukan</p>

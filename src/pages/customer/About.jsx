@@ -52,7 +52,7 @@ export default function About() {
   return (
     <div className="min-h-screen bg-slate-50">
       {/* Hero Section */}
-      <div className="bg-gradient-to-br from-primary via-primary/90 to-accent text-white">
+      <div className="bg-primary text-white">
         <div className="container mx-auto px-4 py-16 md:py-24">
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
@@ -174,7 +174,7 @@ export default function About() {
               ))}
             </div>
           </div>
-          <div className="bg-gradient-to-br from-primary/10 to-accent/10 rounded-2xl p-8">
+          <div className="bg-primary/10 rounded-2xl p-8">
             <div className="text-center">
               <div className="inline-flex p-4 rounded-full bg-primary/10 text-primary mb-4">
                 <Recycle className="h-12 w-12" />
@@ -209,7 +209,7 @@ export default function About() {
           <div className="flex flex-wrap justify-center gap-8">
             {team.map((member, index) => (
               <div key={index} className="text-center">
-                <div className="w-24 h-24 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center text-white text-2xl font-bold mb-4 mx-auto">
+                <div className="w-24 h-24 rounded-full bg-primary flex items-center justify-center text-white text-2xl font-bold mb-4 mx-auto">
                   {member.initial}
                 </div>
                 <h3 className="font-semibold text-slate-900">{member.name}</h3>
@@ -222,7 +222,7 @@ export default function About() {
 
       {/* CTA Section */}
       <div className="container mx-auto px-4 py-16">
-        <div className="bg-gradient-to-r from-primary to-accent rounded-2xl p-8 md:p-12 text-center text-white">
+        <div className="bg-primary rounded-2xl p-8 md:p-12 text-center text-white">
           <h2 className="text-3xl font-bold mb-4">Siap Memulai?</h2>
           <p className="text-white/80 mb-8 max-w-2xl mx-auto">
             Bergabunglah dengan ribuan pelanggan yang sudah merasakan pengalaman 

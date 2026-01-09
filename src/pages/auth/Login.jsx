@@ -59,7 +59,7 @@ export default function Login() {
   return (
     <div className="flex min-h-screen">
       {/* Left Side - Branding */}
-      <div className="hidden w-1/2 bg-gradient-to-br from-primary via-primary/90 to-teal-600 lg:flex lg:flex-col lg:justify-between p-12">
+      <div className="hidden w-1/2 bg-primary lg:flex lg:flex-col lg:justify-between p-12">
         <Link to="/" className="flex items-center space-x-2">
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/20 backdrop-blur-sm">
             <Package className="h-6 w-6 text-white" />
@@ -88,7 +88,7 @@ export default function Login() {
               <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary">
                 <Package className="h-6 w-6 text-white" />
               </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Kondang Thrift</span>
+              <span className="text-2xl font-bold text-primary">Kondang Thrift</span>
             </Link>
           </div>
 

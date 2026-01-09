@@ -214,7 +214,7 @@ export default function Orders() {
               </div>
             ) : orders.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-amber-100 to-orange-100 mb-4">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-amber-100 mb-4">
                   <ShoppingCart className="h-8 w-8 text-amber-600" />
                 </div>
                 <p className="text-base font-medium text-slate-900 mb-1">Tidak ada pesanan ditemukan</p>

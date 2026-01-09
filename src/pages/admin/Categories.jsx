@@ -137,7 +137,7 @@ export default function Categories() {
               </div>
             ) : categories.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-12 text-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 to-purple-100 mb-4">
+                <div className="flex h-16 w-16 items-center justify-center rounded-full bg-indigo-100 mb-4">
                   <Layers className="h-8 w-8 text-indigo-600" />
                 </div>
                 <p className="text-base font-medium text-slate-900 mb-1">Belum ada kategori</p>
@@ -155,7 +155,7 @@ export default function Categories() {
                     className="flex items-center justify-between p-4 hover:bg-slate-50 transition-colors group"
                   >
                     <div className="flex items-center gap-3 min-w-0 flex-1">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-indigo-50 to-purple-50 border border-indigo-100 flex-shrink-0 group-hover:from-indigo-100 group-hover:to-purple-100 transition-colors">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-50 border border-indigo-100 flex-shrink-0 group-hover:bg-indigo-100 transition-colors">
                         <Grid3x3 className="h-6 w-6 text-indigo-600" />
                       </div>
                       <div className="min-w-0 flex-1">

@@ -119,7 +119,7 @@ export default function Categories() {
                     to={`/?category=${category.id}`}
                     className="group bg-white rounded-2xl p-6 border border-slate-200 hover:border-slate-300 hover:shadow-lg transition-all duration-300"
                   >
-                    <div className={`inline-flex p-4 rounded-xl bg-gradient-to-br ${colorClass} text-white mb-4 group-hover:scale-110 transition-transform`}>
+                    <div className={`inline-flex p-4 rounded-xl ${colorClass} text-white mb-4 group-hover:scale-110 transition-transform`}>
                       <Icon className="h-8 w-8" />
                     </div>
                     <h3 className="font-semibold text-slate-900 text-lg mb-1 group-hover:text-primary transition-colors">
@@ -152,7 +152,7 @@ export default function Categories() {
         )}
 
         {/* CTA Section */}
-        <div className="mt-12 bg-gradient-to-r from-primary to-accent rounded-2xl p-8 text-center text-white">
+        <div className="mt-12 bg-primary rounded-2xl p-8 text-center text-white">
           <h2 className="text-2xl font-bold mb-2">Tidak Menemukan yang Dicari?</h2>
           <p className="text-white/80 mb-6">
             Coba gunakan fitur pencarian untuk menemukan produk spesifik
